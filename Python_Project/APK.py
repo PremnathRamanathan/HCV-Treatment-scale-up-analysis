@@ -52,6 +52,12 @@ def sub_plots():
     fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(20, 10))
     fig.subplots_adjust(hspace=1.0)
 
+try:
+    def plot_stats(stats):
+        mean = stats['mean'].plot
+
+except Exception as e:
+    print(e)
 
 try:
     # Basic statistics of a Dataset
@@ -60,7 +66,9 @@ try:
         print('Summary statistics of a Dataset \n')
         for ds in dataset_name:
             print(ds.describe())
+            result = ds.describe()
         print('\n')
+        return result
 
 
     # Basic statistics of a variable
@@ -148,5 +156,7 @@ if __name__ == '__main__':
     datasets = fileHandling(lhs1)
     print(datasets[0])
     # Summary statistics for LHS1 dataset
-    summary_statistics_dataset(datasets)
+    result_stats = summary_statistics_dataset(datasets)
+    #  plotting the stats
+    plot_stats(result_stats)
 
