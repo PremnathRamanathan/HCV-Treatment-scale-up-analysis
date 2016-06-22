@@ -53,11 +53,14 @@ def sub_plots():
     fig.subplots_adjust(hspace=1.0)
 
 try:
+    # Plotting statistics from a dataset
     def plot_stats(stats):
-        mean = stats['mean'].plot
+        # stats.hist()
+        stats.boxplot()
+        plt.show()
 
 except Exception as e:
-    print(e)
+    print(e.__cause__)
 
 try:
     # Basic statistics of a Dataset
